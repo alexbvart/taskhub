@@ -6,6 +6,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --action2: #a6fd70;
+  --action1: #0067ff;
+  --reddamange: #eb2739;
+  --alert: #fed606;
+  --transparent: #000000;
+  --black: #000000;
+  --white: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +25,24 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.boxShadow {
+  box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.02);
+  &:hover{
+    box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.12);
+  }
+} 
+
+.boxShadow:hover{
+  box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.12);
+}
+
+.bgCard{
+  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
+  transition-colors bg-neutral-950 
+  boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30;
 }

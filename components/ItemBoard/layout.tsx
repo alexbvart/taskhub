@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className='flex'>
           <div className='h-screen w-32 bgCard'> logo </div>
-          <div className="w-full">
+          <div className=" p-10">
             {children}
           </div>
         </div>
