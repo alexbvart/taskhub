@@ -1,5 +1,6 @@
 import ItemBoard from "@/components/ItemBoard";
 import ItemList from "@/components/ItemList";
+import Item from "@/components/ItemList/Item";
 import ItemTimeSheet from "@/components/ItemTimeSheet";
 import Summary from "@/components/Summary";
 import TaskInfoCard from "@/components/TaskInfoCard";
@@ -30,7 +31,15 @@ export default function Task() {
                     </Summary>
                 </div>
 
-                    <ItemList />
+                    <ItemList title="SubTask" >
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                    </ItemList>
             </div>
 
             <TaskInfoCard />
