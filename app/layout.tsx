@@ -23,7 +23,7 @@ export default function RootLayout({
               <li> <Link href="/">Logo</Link> </li>
               <li> <Link href="task">Task</Link> </li>
               <li> <Link href="board">Board</Link> </li>
-              <li> <Link href="calendar">TimeSheet</Link> </li>
+              <li> <Link href="timesheet">TimeSheet</Link> </li>
             </ul>
           </div>
           <div className="w-full">

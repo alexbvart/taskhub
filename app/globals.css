@@ -42,7 +42,15 @@ body {
 }
 
 .bgCard{
-  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
+  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent 
   transition-colors bg-neutral-900 
+  py-4
+  boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30;
+}
+
+.bgCard950{
+  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent 
+  transition-colors bg-neutral-950 
+  py-4
   boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30;
 }
