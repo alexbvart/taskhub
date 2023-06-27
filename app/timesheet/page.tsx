@@ -1,35 +1,12 @@
 'use client'
-import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import ItemTimeSheet from "@/components/ItemTimeSheet";
-import { v4 as uuidv4 } from 'uuid';
 import ItemListBoard from "@/components/ItemList/ItemListBoard";
 import ItemListTime from "@/components/ItemList/ItemListTime";
-import { getWeekArray } from "@/utils/calendar";
-import { stringify } from "querystring";
+import useTimeSheet from "./useTimeSheet";
+import {ITEMS} from "@/mooks/items"
 
-const ITEMS = [
-    {
-        id: uuidv4(),
-        content: 'Headline'
-    },
-    {
-        id: uuidv4(),
-        content: 'Copy'
-    },
-    {
-        id: uuidv4(),
-        content: 'Image'
-    },
-    {
-        id: uuidv4(),
-        content: 'Slideshow'
-    },
-    {
-        id: uuidv4(),
-        content: 'Quote'
-    }
-];
+
 
 
 
@@ -40,40 +17,7 @@ const getItems = (count, offset = 0) =>
         content: `item ${k + offset}`
     }));
 
-const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
 
-    return result;
-};
-
-/**
- * Moves an item from one list to another list.
- */
-const copy = (source, destination, droppableSource, droppableDestination) => {
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const item = sourceClone[droppableSource.index];
-
-    destClone.splice(droppableDestination.index, 0, { ...item, id: uuidv4() });
-    return destClone;
-};
-
-const move = (source, destination, droppableSource, droppableDestination) => {
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-    destClone.splice(droppableDestination.index, 0, removed);
-
-    const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
-
-    return result;
-};
-const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
@@ -97,56 +41,8 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 const QuoteApp = () => {
-    const weekArray = getWeekArray()
-    const [weekSelected, setWeekSelected] = useState(
-        weekArray.map((day) =>  ({
-            "day" :  day,
-            "issues" : [],
-        }))
-    )
-    
-    const [state, setState] = useState(weekSelected);
 
-    function onDragEnd(result) {
-        const { source, destination } = result;
-
-        // dropped outside the list
-        if (!destination)   return
-        // const sInd = +source.droppableId;
-        // const dInd = +destination.droppableId;
-        const sInd = source.droppableId;
-        const dInd = destination.droppableId;
-
-        console.log({ sInd }, { dInd });
-        switch (sInd) {
-            case dInd:
-                if (dInd === 'ITEMS')   return
-
-                const items = reorder(state[sInd], source.index, destination.index);
-                let newState2 = [...state];
-                newState2[sInd] = items;
-                setState(newState2);
-                break;
-
-            case 'ITEMS':
-
-                const itemCopy = copy(ITEMS, state[dInd], source, destination)
-                let newState3 = [...state];
-                newState3[dInd] = itemCopy;
-                setState(newState3);
-
-                break;
-            default:
-                const result = move(state[sInd], state[dInd], source, destination);
-                let newState = [...state];
-
-                newState[sInd] = result[sInd];
-                newState[dInd] = result[dInd];
-                setState(newState);
-                // setState(newState.filter((group) => group.length));
-                break;
-        }
-    }
+    const { state, onDragEnd } = useTimeSheet();
 
     return (
         <>
@@ -202,9 +98,10 @@ const QuoteApp = () => {
                     )}
                 </Droppable>
 
-                {weekSelected.map((el, ind) => (
+                {state.map((el, ind) => (
 
-                    <Droppable key={ind} droppableId={`${el.day.toLocaleDateString()}`}>
+                    <Droppable key={ind} droppableId={`${ind}`}>
+                    {/* <Droppable key={ind} droppableId={`${el.day.toLocaleDateString()}`}> */}
 
                         {(provided, snapshot) => (
                             <div
