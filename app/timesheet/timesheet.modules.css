@@ -1,12 +1,12 @@
 .timesheetGrid {
     min-width: 100%;
     display: grid;
-    gap: 1rem;
+    gap: 2px;
     grid-template-columns: 1fr;
 }
 
 @media (min-width: 600px) {
     .timesheetGrid {
-        grid-template-columns: 2fr 1fr 1fr 1fr 1fr  1fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr  1fr 1fr 1fr;
     }
 }

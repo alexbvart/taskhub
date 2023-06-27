@@ -1,0 +1,16 @@
+{
+    "issueId": "6412953",
+    "issueKey": "SAPPOOLARG-3818",
+    "pluginKey": "softwareplant.bigtemplate",
+    "application-base-url": "https://umane.emeal.nttdata.com/jiraito",
+    "main-extplatform-id": "2",
+    "userKey": "JIRAUSER162279",
+    "projectKey": "SAPPOOLARG",
+    "pluginName": "bigtemplate",
+    "hasPluginAdministratorPermission": "false",
+    "restBaseURL": "softwareplant-bigtemplate",
+    "isDownloadingLogsEnabled": "true",
+    "main-extplatform-base-url": "https://umane.emeal.nttdata.com/jiraito",
+    "projectId": "32632",
+    "statisticsCollectionEnabled": "true"
+    }
