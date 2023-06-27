@@ -5,6 +5,8 @@ import ItemTimeSheet from "@/components/ItemTimeSheet";
 import { v4 as uuidv4 } from 'uuid';
 import ItemListBoard from "@/components/ItemList/ItemListBoard";
 import ItemListTime from "@/components/ItemList/ItemListTime";
+import { getWeekArray } from "@/utils/calendar";
+import { stringify } from "querystring";
 
 const ITEMS = [
     {
@@ -95,16 +97,15 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 const QuoteApp = () => {
-
-    const [state, setState] = useState([
-        getItems(0, 0),
-        getItems(0, 10),
-        getItems(0, 20),
-        getItems(0, 30),
-        getItems(0, 40),
-        getItems(0, 56),
-        getItems(0, 65),
-    ]);
+    const weekArray = getWeekArray()
+    const [weekSelected, setWeekSelected] = useState(
+        weekArray.map((day) =>  ({
+            "day" :  day,
+            "issues" : [],
+        }))
+    )
+    
+    const [state, setState] = useState(weekSelected);
 
     function onDragEnd(result) {
         const { source, destination } = result;
@@ -201,9 +202,9 @@ const QuoteApp = () => {
                     )}
                 </Droppable>
 
-                {state.map((el, ind) => (
+                {weekSelected.map((el, ind) => (
 
-                    <Droppable key={ind} droppableId={`${ind}`}>
+                    <Droppable key={ind} droppableId={`${el.day.toLocaleDateString()}`}>
 
                         {(provided, snapshot) => (
                             <div
@@ -211,10 +212,13 @@ const QuoteApp = () => {
                                 style={getListStyle(snapshot.isDraggingOver)}
                                 {...provided.droppableProps}
                             >
-                                <ItemListTime day={"aa"}>
+                                <ItemListTime 
+                                    day={el.day.toLocaleDateString('en-us', { weekday:"long"})}
+                                    day_month={el.day.toLocaleDateString('en-us', { day:"numeric", month:"numeric" })}
+                                >
                                     {
-                                        el.length
-                                            ? el.map((item, index) => (
+                                        el.issues.length
+                                            ? el.issues.map((item, index) => (
 
                                                 <Draggable
                                                     key={item.id}

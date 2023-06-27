@@ -3,7 +3,7 @@ import Pill from "../Pill"
 const ItemBoard = () => {
     return (
         <div
-            className="group drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
+            className="select-none	 group drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
                     transition-colors bg-neutral-950 
                     boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >

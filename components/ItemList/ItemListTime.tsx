@@ -8,7 +8,7 @@ const ItemListTime = React.forwardRef((props, ref) => {
                 <h3 className="font-normal text-base">
                     {props.day}
                 </h3>
-                <span className="opacity-40 font-light text-xs" > 05/06 </span>
+                <span className="opacity-40 font-light text-xs" > {props.day_month} </span>
                 <span className="font-normal text-sm">{props.numberOfTasks}h</span>
             </div>
             <div className="">
