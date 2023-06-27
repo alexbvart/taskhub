@@ -1,6 +1,6 @@
 const ItemListBoard = ({title, color="gray", children, numberOfTasks=0}) => {
     return (
-        <div className="w-full p-4 bgCardNotBlur  max-h-full" >
+        <div className="w-full p-4 bgCardNotBlur  max-h-full allH" >
             <div className="flex items-center justify-between mb-4 gap-2">
                 <span className={`flex w-3 h-3 ${color} rounded-full`}></span>
                 <h3 className="font-normal text-base">

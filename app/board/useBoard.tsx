@@ -1,16 +1,22 @@
-import { useState } from 'react'
-import { getWeekArray } from "@/utils/calendar";
+import { useEffect, useState } from 'react'
 import { copy, move, reorder } from "@/utils/drag";
-import {ITEMS} from "@/mooks/items"
-const useTimeSheet = () => {
+import { worklogs } from "@/mooks/worklogs"
 
-    const weekArray = getWeekArray()
+const statusFlow = ['Open', 'In progress', 'Delivery', 'Closed']
+const useBoard = () => {
+
     const [state, setState] = useState(
-        weekArray.map((day) => ({
-            "day": day,
+        statusFlow.map((status) => ({
+            "status": status,
             "issues": [],
         }))
     )
+    useEffect(() => {
+        let newStateFlow = [...state];
+        newStateFlow[0].issues = worklogs;
+        setState(newStateFlow)
+    }, [])
+    
 
     function onDragEnd(result) {
         const { source, destination } = result;
@@ -41,6 +47,7 @@ const useTimeSheet = () => {
                 newState3[dInd].issues = itemCopy;
                 setState(newState3);
                 break;
+                
             default:
                 const result = move(state[sInd].issues, state[dInd].issues, source, destination);
                 let newState = [...state];
@@ -56,4 +63,4 @@ const useTimeSheet = () => {
     return { state, onDragEnd }
 }
 
-export default useTimeSheet
+export default useBoard

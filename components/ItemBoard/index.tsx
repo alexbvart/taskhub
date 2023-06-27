@@ -1,6 +1,8 @@
 import Pill from "../Pill"
 
-const ItemBoard = () => {
+const ItemBoard = ({issueKey, issueSummary}) => {
+
+    const isSummary = issueSummary.split("/");
     return (
         <div
             className="select-none	 group drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
@@ -8,10 +10,10 @@ const ItemBoard = () => {
                     boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
             <h2 className={`mb-2 text-sm font-light`}>
-                ABCPOOL-3366
+                {issueKey}
             </h2>
             <h3 className={`mb-5 text-lg font-semibold`}>
-                <span className={`mb-3 text-base font-light`}>POOL-3360  /</span> Presentation
+                <span className={`mb-3 text-base font-light`}> {isSummary[0]}  /</span> {isSummary[1]}
             </h3>
             {/* <p className={`m-0 max-w-[30ch]  opacity-50`}>
                     Find in-depth information about Next.js features and API.
