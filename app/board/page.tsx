@@ -8,7 +8,6 @@ import useBoard from "./useBoard";
 const Board = () => {
 
     const { state, onDragEnd } = useBoard();
-    console.log(state);
 
     return (
         <>
@@ -22,7 +21,7 @@ const Board = () => {
                                 // style={getListStyle(snapshot.isDraggingOver)}
                                 {...provided.droppableProps}
                             >
-                                <ItemListBoard title={sflow.status}>
+                                <ItemListBoard title={sflow.status} numberOfTasks={sflow.issues.length}>
                                     {
                                         sflow.issues.length ?
                                         sflow.issues.map((issue, index)=>(
@@ -43,6 +42,7 @@ const Board = () => {
                                                         >
                                                             <ItemBoard issueKey={issue.issueKey} 
                                                                     issueSummary={issue.issueSummary}
+                                                                    isDragging={snapshot.isDragging}
                                                             />
                                                         </div>
                                                     )}

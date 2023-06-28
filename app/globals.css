@@ -42,7 +42,7 @@ body {
 }
 
 .boxShadowActive{
-  box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.150);
+  box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.120);
 }
 
 .myBlur{

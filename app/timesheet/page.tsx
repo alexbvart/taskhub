@@ -77,7 +77,7 @@ const QuoteApp = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                             >
-                                                <ItemTimeSheet title={`${issue.content}`} />
+                                                <ItemTimeSheet title={`${issue.content}`} isDragging={snapshot.isDragging}/>
                                                 {/* {`${issue.content}`} */}
                                             </div>
                                         )}
