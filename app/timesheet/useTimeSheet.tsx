@@ -23,10 +23,11 @@ const useTimeSheet = () => {
         const dInd = destination.droppableId;
 
         console.log({ sInd }, { dInd });
+        if (dInd === 'ITEMS') return
         switch (sInd) {
 
             case dInd:
-                if (dInd === 'ITEMS') return
+                
 
                 const items = reorder(state[sInd].issues, source.index, destination.index);
                 let newState2 = [...state];

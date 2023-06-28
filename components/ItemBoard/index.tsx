@@ -1,13 +1,16 @@
 import Pill from "../Pill"
 
-const ItemBoard = ({issueKey, issueSummary}) => {
+const ItemBoard = ({ issueKey, issueSummary, isDragging= false }) => {
 
     const isSummary = issueSummary.split("/");
     return (
         <div
-            className="select-none	 group drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent px-5 py-4 
-                    transition-colors bg-neutral-950 
-                    boxShadow hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            className={`  
+        ease-out duration-300
+        drop-shadow-2xl shadow-inner backdrop-blur-lg rounded-lg 
+        border  p-2 w-full select-none 
+        ${isDragging ? " border-gray-400 dark:border-neutral-500 myBlur bg-transparent boxShadowActive"
+                    : "  border-gray-300 dark:border-neutral-800 bg-neutral-950 boxShadow"}`}
         >
             <h2 className={`mb-2 text-sm font-light`}>
                 {issueKey}

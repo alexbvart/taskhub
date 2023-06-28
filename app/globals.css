@@ -41,6 +41,17 @@ body {
   box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.12);
 }
 
+.boxShadowActive{
+  box-shadow: inset 0px 25px 100px rgba(255, 255, 255, 0.150);
+}
+
+.myBlur{
+  backdrop-filter: blur(10px);
+}
+
+.itemDrag{
+  @apply border border-gray-300 dark:border-neutral-800;
+}
 
 .bgCard{
   @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent 
@@ -53,14 +64,15 @@ body {
   @apply drop-shadow-2xl shadow-inner	rounded-lg border border-transparent 
   transition-colors bg-neutral-900 ease-out duration-300
   py-4 -z-10 hover:bg-transparent
-  boxShadow hover:border-gray-300 hover:dark:border-neutral-700;
+  
 }
 
 .bgCard950{
-  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg border border-transparent 
-  transition-colors bg-neutral-950 ease-out duration-300
+  @apply drop-shadow-2xl shadow-inner	 backdrop-blur-lg rounded-lg 
+  transition-colors 
+  bg-neutral-950 ease-out duration-300
   py-4  
-  boxShadow hover:border-gray-300 hover:dark:border-neutral-700 ;
+  hover:border-gray-300 hover:dark:border-neutral-700 ;
 }
 
 .allH{

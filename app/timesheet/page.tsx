@@ -6,10 +6,6 @@ import ItemListTime from "@/components/ItemList/ItemListTime";
 import useTimeSheet from "./useTimeSheet";
 import {ITEMS} from "@/mooks/items"
 
-
-
-
-
 // fake data generator
 const getItems = (count, offset = 0) =>
     Array.from({ length: count }, (v, k) => k).map((k) => ({
@@ -18,22 +14,18 @@ const getItems = (count, offset = 0) =>
     }));
 
 
-
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
-    "z-index": "10",
-    // padding: grid * 2,
     padding: '0',
     margin: `0`,
-    position: 'relative',
-
     // change background colour if dragging
-     background: isDragging ? "lightgreen" : "red",
+    //background: isDragging ? "lightgreen" : "red",
 
     // styles we need to apply on draggables
     ...draggableStyle
 });
+
 const getListStyle = (isDraggingOver) => ({
     // background: isDraggingOver ? "lightblue" : "blue",
     // padding: grid,
@@ -132,13 +124,15 @@ const QuoteApp = () => {
                                                                 provided.draggableProps.style
                                                             )}
                                                         >
-                                                            <ItemTimeSheet title={`${item.content}`} />
+                                                            <ItemTimeSheet title={`${item.content}`} isDragging={snapshot.isDragging} />
                                                         </div>
                                                     )}
                                                 </Draggable>
                                             ))
                                             : (
-                                                <div className="opacity-25 px-2 text-sm">Drop items here</div>
+                                                <div className="flex justify-center align-middle text-center opacity-25 px-2 py-4 text-sm rounded-lg border-dashed border-2 border-neutral-600">
+                                                    Drag and drop the tasks done on {el.day.toLocaleDateString('en-us', { day:"numeric", month:"long" })} here
+                                                </div>
                                             )
                                     }
                                     {provided.placeholder}

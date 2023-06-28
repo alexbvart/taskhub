@@ -1,23 +1,24 @@
 import React from "react";
 
-const ItemListTime = React.forwardRef((props, ref) => {
-    // const ItemListTime = ({day, color="gray", children, numberOfTasks=0}) => {
+// const ItemListTime = React.forwardRef((props, ref) => {
+const ItemListTime = ({day, day_month, color="gray", children, numberOfTasks=0}) => {
     return (
-        <div className=" w-full bgCardNotBlur px-2  allH z-1" ref={ref}>
+        <div className=" w-full boxShadow rounded-lg border border-transparent 
+            hover:bg-transparent bg-neutral-900 py-4 px-2  allH z-1" >
             <div className="flex items-center justify-between mb-4 gap-2">
                 <h3 className="font-normal text-base">
-                    {props.day}
+                    {day}
                 </h3>
-                <span className="opacity-40 font-light text-xs" > {props.day_month} </span>
-                <span className="font-normal text-sm">{props.numberOfTasks}h</span>
+                <span className="opacity-40 font-light text-xs" > {day_month} </span>
+                <span className="font-normal text-sm">{numberOfTasks}h</span>
             </div>
             <div className="">
-                <ul role="list" className="list-none divide-y divide-gray-200 dark:divide-gray-700 gap-3">
-                    {props.children}
+                <ul role="list" className="list-none flex flex-col gap-3">
+                    {children}
                 </ul>
             </div>
         </div>
     )
-});
+};
 
 export default ItemListTime
